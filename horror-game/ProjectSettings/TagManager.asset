@@ -3,10 +3,14 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - Obj01
-  - Obj02
-  - Obj03
+  - Laptop
+  - Light
+  - Newspaper
+  - Note
   - 
+  - Obj01
+  - Obj03
+  - Obj02
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
