@@ -4,13 +4,11 @@
 TagManager:
   tags:
   - Laptop
-  - Light
+  - LightSwitch
   - Newspaper
+  - NewspaperSlide
   - Note
-  - 
-  - Obj01
-  - Obj03
-  - Obj02
+  - NoteSlide
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

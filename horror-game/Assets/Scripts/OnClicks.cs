@@ -45,7 +45,7 @@ public class OnClicks : MonoBehaviour {
                                     eventManager.LaptopStatic();
                                 }
                                 break;
-                            case "Light":
+                            case "LightSwitch":
                                 clicks[1]++;
                                 Debug.Log(clicks[1]);
                                 if (clicks[1] == 10) {
@@ -55,11 +55,13 @@ public class OnClicks : MonoBehaviour {
                             case "Newspaper":
                                 clicks[2]++;
                                 Debug.Log(clicks[2]);
+                                eventManager.Newspaper();
                                 // TODO : Open up the Newspaper by switching scene? slide it in the screen.
                                 break;
                             case "Note":
                                 clicks[3]++;
                                 Debug.Log(clicks[3]);
+                                eventManager.Note();
                                 // TODO : Open up the Note by switching scene? slide it in the screen.
                                 break;
                         }
