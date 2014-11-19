@@ -2,14 +2,14 @@
 using System.Collections;
 
 public class EventManager : MonoBehaviour {
+    public static string firstClicked;
+    // All events will be in here
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Start()
+    {
+        
+
+
+
+    }
 }
