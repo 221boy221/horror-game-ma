@@ -583,7 +583,7 @@ GameObject:
   - 64: {fileID: 1270411152}
   - 23: {fileID: 1270411151}
   m_Layer: 0
-  m_Name: LightSwitch
+  m_Name: Lightswitch
   m_TagString: LightSwitch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
