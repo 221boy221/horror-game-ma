@@ -827,6 +827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 225773664}
   speed: 20
+  popup: 0
 --- !u!23 &1557723530
 Renderer:
   m_ObjectHideFlags: 0
@@ -974,6 +975,10 @@ Prefab:
     - target: {fileID: 400000, guid: 78ae210e0b103ec4492afc18302d7c94, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 78ae210e0b103ec4492afc18302d7c94, type: 2}
+      propertyPath: popup
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78ae210e0b103ec4492afc18302d7c94, type: 2}
@@ -1159,6 +1164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1820366642}
   speed: 20
+  popup: 0
 --- !u!23 &2067754671
 Renderer:
   m_ObjectHideFlags: 0

@@ -6,8 +6,9 @@ public class SliderScript : MonoBehaviour {
 	public Transform target;
 	public float speed;
 
-    private bool popup = false;
+    public bool popup = false;
     private Vector3 originalPos;
+    public bool clickAble = true;
 
     void Start() {
         originalPos = transform.position;
@@ -25,7 +26,7 @@ public class SliderScript : MonoBehaviour {
 	}
     
     void OnMouseDown() {
-        popup = false;
+        if (clickAble) popup = false;
     }
 
     public void TogglePopup() {

@@ -3,14 +3,20 @@ using System.Collections;
 
 public class DelayScript : MonoBehaviour {
 	
+    private SliderScript newspaperSlide;
 
-	void Start () {
-		Invoke("DelayInvoke",(Random.Range(1, 5)));
+	void Awake () {
+        newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
+		Invoke("DelayInvoke",(5));
 	}
 
-	void TimerInvoke()
-	{
-		Debug.Log("ping");
+    private void DelayInvoke() {
+        newspaperSlide.TogglePopup();
+        Invoke("LoadGame", (1));
 	}
+
+    private void LoadGame() {
+        Application.LoadLevel("prototype01");
+    }
 
 }
