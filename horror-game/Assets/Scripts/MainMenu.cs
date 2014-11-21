@@ -11,14 +11,10 @@ public class MainMenu:MonoBehaviour {
 	[SerializeField] private GUIStyle playStyle;
 	[SerializeField] private GUIStyle quitStyle;
 
-	private bool opened = true;
-    private float screenResX = 1280.0f;
-    private float screenResY = 720.0f;
+    private float screenResX = 1920.0f;
+    private float screenResY = 1080.0f;
 
     void OnGUI() {
-        if (!opened) {
-			return; 
-        }
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), menuBG);
 		GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3((float)Screen.width / screenResX, (float)Screen.height / screenResY, 1));
         // Logo
