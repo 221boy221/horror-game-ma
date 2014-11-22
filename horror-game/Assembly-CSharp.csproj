@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\DelayScript.cs" />
      <Compile Include="Assets\Scripts\EventManager.cs" />
+     <Compile Include="Assets\Scripts\InvManager.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\OnClicks.cs" />
      <Compile Include="Assets\Scripts\SliderScript.cs" />

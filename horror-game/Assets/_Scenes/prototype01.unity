@@ -828,6 +828,7 @@ MonoBehaviour:
   target: {fileID: 225773664}
   speed: 20
   popup: 0
+  clickAble: 1
 --- !u!23 &1557723530
 Renderer:
   m_ObjectHideFlags: 0
@@ -1165,6 +1166,7 @@ MonoBehaviour:
   target: {fileID: 1820366642}
   speed: 20
   popup: 0
+  clickAble: 1
 --- !u!23 &2067754671
 Renderer:
   m_ObjectHideFlags: 0
