@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 6fffdc3dd41311640ba2be1f408f98be
+guid: e17f34f49206393439d0ca8405321d36
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Fresh_paper_paper
-    21300002: note
+    21300000: lightswitch2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,10 +25,10 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: 2
-    aniso: 1
+    filterMode: -1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

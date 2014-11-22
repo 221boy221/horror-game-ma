@@ -9,6 +9,11 @@ TagManager:
   - NewspaperSlide
   - Note
   - NoteSlide
+  - InvButton
+  - InvSlide
+  - 
+  - Inventory
+  - Fader
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

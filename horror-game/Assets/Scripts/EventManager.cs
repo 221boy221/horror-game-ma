@@ -6,10 +6,12 @@ public class EventManager : MonoBehaviour {
     //public static string firstClicked;
     private SliderScript newspaperSlide;
     private SliderScript noteSlide;
+    private SliderScript invSlide;
 
     void Start() {
         newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
         noteSlide = GameObject.FindGameObjectWithTag("NoteSlide").GetComponent<SliderScript>();
+        invSlide = GameObject.FindGameObjectWithTag("InvSlide").GetComponent<SliderScript>();
     }
     
 
@@ -33,5 +35,10 @@ public class EventManager : MonoBehaviour {
     public void Note() {
         Debug.Log("Scroll Note into screen");
         noteSlide.TogglePopup();
+    }
+
+    public void InvButton() {
+        Debug.Log("Scroll Note into screen");
+        invSlide.TogglePopup();
     }
 }
