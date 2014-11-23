@@ -9,6 +9,11 @@ TagManager:
   - NewspaperSlide
   - Note
   - NoteSlide
+  - InvButton
+  - InvSlide
+  - 
+  - Inventory
+  - Fader
   - 
   - Light
   - 

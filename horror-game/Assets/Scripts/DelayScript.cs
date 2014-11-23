@@ -7,16 +7,16 @@ public class DelayScript : MonoBehaviour {
 
 	void Awake () {
         newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
-		Invoke("DelayInvoke",(5));
+		Invoke("DelayInvoke",(10));
 	}
 
     private void DelayInvoke() {
         newspaperSlide.TogglePopup();
-        Invoke("LoadGame", (1));
+        Invoke("LoadGame", 3);
 	}
 
     private void LoadGame() {
-        Application.LoadLevel("prototype01");
+        Application.LoadLevel("GameScene");
     }
 
 }

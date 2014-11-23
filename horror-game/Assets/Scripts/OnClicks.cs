@@ -24,6 +24,7 @@ public class OnClicks : MonoBehaviour {
             if (hit) {
 
                 string t = hitInfo.transform.gameObject.tag;
+<<<<<<< HEAD
                 /*
                 if (EventManager.firstClicked == null) {
                     EventManager.firstClicked = t;
@@ -32,6 +33,9 @@ public class OnClicks : MonoBehaviour {
                 if (t == EventManager.firstClicked) {
                 */
 				//if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
+=======
+
+>>>>>>> origin/master
                 switch (stage) {
                     case 1:
                         // Stage 1
@@ -55,16 +59,23 @@ public class OnClicks : MonoBehaviour {
                                 clicks[2]++;
                                 Debug.Log(clicks[2]);
                                 eventManager.Newspaper();
+<<<<<<< HEAD
 								if (clicks[2] == 5) {
 									//eventManager.Newspaper();
 								}
                                 // TODO : Open up the Newspaper by switching scene? slide it in the screen.
+=======
+>>>>>>> origin/master
                                 break;
                             case "Note":
                                 clicks[3]++;
                                 Debug.Log(clicks[3]);
                                 eventManager.Note();
-                                // TODO : Open up the Note by switching scene? slide it in the screen.
+                                break;
+                            case "InvButton":
+                                clicks[4]++;
+                                Debug.Log(clicks[4]);
+                                eventManager.InvButton();
                                 break;
 							case "Box":
 								clicks[4]++;
