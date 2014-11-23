@@ -26,7 +26,7 @@ public class Inv : MonoBehaviour {
     void Start() {
         // Loop through the rows array and make cols
         for (int row = 0; row < Rows; row++) {
-            rows[row] = new Row("picture" + row, "key " + row, "note " + row);
+        //    rows[row] = new Row("picture" + row, "key " + row, "note " + row);
         }
 
         // Center inventory onto object

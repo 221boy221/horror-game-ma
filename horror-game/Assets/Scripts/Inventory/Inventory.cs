@@ -7,7 +7,11 @@ public class Inventory : MonoBehaviour {
 
 	public Rect rect;
 	public Texture2D background;
-    public GUIStyle texture;
+
+    public GUIStyle picture;
+    public GUIStyle key;
+    public GUIStyle note;
+
     public GameObject objToFollow;
 	
     private float screenResX = 1920.0f;
@@ -21,7 +25,7 @@ public class Inventory : MonoBehaviour {
 	void Start() {
 		for (int row=0; row < Rows; row++) 
 		{
-			rows[row] = new Row( "picture" + row, "key " + row, "note " + row );
+            rows[row] = new Row(picture, key, note);
 		}
 	}
     

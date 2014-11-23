@@ -4,17 +4,16 @@ using System.Collections;
 public class OnClicks : MonoBehaviour {
 
     private EventManager eventManager;
-    private int stage = 1;
     private int[] clicks;
 
 
-    void Start() {
+    private void Start() {
         eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
 
         clicks = new int[9];
     }
 
-    void Update() {
+    private void Update() {
         if (Input.GetMouseButtonDown(0)) {
             Debug.Log("--- Click ---");
 
@@ -24,19 +23,11 @@ public class OnClicks : MonoBehaviour {
             if (hit) {
 
                 string t = hitInfo.transform.gameObject.tag;
-                /*
-                if (EventManager.firstClicked == null) {
-                    EventManager.firstClicked = t;
-                }
-                
-                if (t == EventManager.firstClicked) {
-                */
-				//if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
 
-                switch (stage) {
+                switch (GameManager.stage) {
                     case 1:
                         // Stage 1
-                        Debug.Log("Clicked on: " + t);
+                        Debug.Log("S1 Clicked on: " + t);
                         switch (t) {
                             case "Laptop":
                                 clicks[0]++;
@@ -56,11 +47,6 @@ public class OnClicks : MonoBehaviour {
                                 clicks[2]++;
                                 Debug.Log(clicks[2]);
                                 eventManager.Newspaper();
-
-								if (clicks[2] == 5) {
-									//eventManager.Newspaper();
-								}
-                                // TODO : Open up the Newspaper by switching scene? slide it in the screen
                                 break;
                             case "Note":
                                 clicks[3]++;
@@ -72,28 +58,27 @@ public class OnClicks : MonoBehaviour {
                                 Debug.Log(clicks[4]);
                                 eventManager.InvButton();
                                 break;
-							case "Box":
+							case "Box":     // TODO: Find a better way to do this and the part at stage 2
 								clicks[4]++;
 								Debug.Log(clicks[4]);
 								if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
-									stage++;
-									//eventManager.Box();
+									GameManager.stage++;
+                                    Application.LoadLevel("InsideBox");
 								}
 								break;
                         }
                         break;
 					//Stage 2
                     case 2:
-						Debug.Log("Clicked on: " + t);
-						Application.LoadLevel("InsideBox");
+						Debug.Log("S2 Clicked on: " + t);
 						switch (t) {
 							case "BoxNote":
 								clicks[5]++;
-								Debug.Log("well fuck");
 								eventManager.BoxNote();
 								break;
-							case "back":
-								Application.LoadLevel("prototype01");
+							case "Back":
+								Application.LoadLevel("GameScene");
+                                GameManager.stage--;
 								break;
 						}
                         break;

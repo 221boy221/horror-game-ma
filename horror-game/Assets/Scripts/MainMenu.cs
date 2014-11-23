@@ -15,11 +15,11 @@ public class MainMenu:MonoBehaviour {
     private FadeInOut screenFader;
     private bool endScene = false;
 
-    void Start() {
+    private void Start() {
         screenFader = GameObject.FindGameObjectWithTag("Fader").GetComponent<FadeInOut>();
     }
 
-    void OnGUI() {
+    private void OnGUI() {
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), menuBG);
         // Start matrix // 
 		GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3((float)Screen.width / screenResX, (float)Screen.height / screenResY, 1));
@@ -35,7 +35,7 @@ public class MainMenu:MonoBehaviour {
 		}
     }
 
-    void Update() {
+    private void Update() {
         if (endScene) {
             screenFader.EndScene();
         }

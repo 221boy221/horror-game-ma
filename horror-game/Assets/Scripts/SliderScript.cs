@@ -10,11 +10,11 @@ public class SliderScript : MonoBehaviour {
     private Vector3 originalPos;
     public bool clickAble = true;
 
-    void Start() {
+    private void Start() {
         originalPos = transform.position;
     }
 
-	void Update() {
+    private void Update() {
         float step = speed * Time.deltaTime;
         
         if (popup) {
@@ -24,8 +24,8 @@ public class SliderScript : MonoBehaviour {
         }
 
 	}
-    
-    void OnMouseDown() {
+
+    private void OnMouseDown() {
         if (clickAble) popup = false;
     }
 

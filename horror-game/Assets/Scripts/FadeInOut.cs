@@ -7,28 +7,28 @@ public class FadeInOut : MonoBehaviour {
     public string loadApp;
     private bool sceneStarting = true;
 
-    void Awake() {
+    private void Awake() {
         // Make texture fill screen
         guiTexture.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
     }
 
-    void Update() {
+    private void Update() {
         if (sceneStarting) {
             StartScene();
         }
     }
 
-    void FadeToClear() {
+    private void FadeToClear() {
         // Slowly fade to clear
         guiTexture.color = Color.Lerp(guiTexture.color, Color.clear, fadeSpeed * Time.deltaTime);
     }
 
-    void FadeToBlack() {
+    private void FadeToBlack() {
         // Slowly fade to black
         guiTexture.color = Color.Lerp(guiTexture.color, Color.black, (fadeSpeed * Time.deltaTime) / 2);
     }
 
-    void StartScene() {
+    private void StartScene() {
         FadeToClear();
 
         if (guiTexture.color.a <= 0.02f) {

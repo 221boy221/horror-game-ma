@@ -6,25 +6,21 @@ public class EventManager : MonoBehaviour {
     private SliderScript newspaperSlide;
     private SliderScript noteSlide;
 	private SliderScript boxNoteSlide;
-	private SliderScript invSlide;
-	
-    void Start() {
-		//if ( != null) {
-			newspaperSlide = GameObject.FindGameObjectWithTag ("NewspaperSlide").GetComponent<SliderScript> ();
-			noteSlide = GameObject.FindGameObjectWithTag ("NoteSlide").GetComponent<SliderScript> ();
-			boxNoteSlide = GameObject.FindGameObjectWithTag ("BoxNoteSlide").GetComponent<SliderScript> ();
-		//}
-		}
-   
+    private SliderScript invSlide;
 
-    void Start() {
-        newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
-        noteSlide = GameObject.FindGameObjectWithTag("NoteSlide").GetComponent<SliderScript>();
-        invSlide = GameObject.FindGameObjectWithTag("InvSlide").GetComponent<SliderScript>();
+    private void Start() {
+        if (Application.loadedLevelName == "GameScene") {
+            newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
+            noteSlide = GameObject.FindGameObjectWithTag("NoteSlide").GetComponent<SliderScript>();
+            //invSlide = GameObject.FindGameObjectWithTag("InvSlide").GetComponent<SliderScript>();
+        } else if (Application.loadedLevelName == "InsideBox") {
+            boxNoteSlide = GameObject.FindGameObjectWithTag("BoxNoteSlide").GetComponent<SliderScript>();
+        }
     }
     
 
     /*          All events will be in here           */
+
 
     public void LaptopStatic() {
         Debug.Log("CRASH LAPTOP SCREEN ETC...");
@@ -46,7 +42,6 @@ public class EventManager : MonoBehaviour {
         noteSlide.TogglePopup();
     }
 
-
 	public void Box() {
 		Debug.Log("drop this beat i mean box");
 		// TODO: make the box drop
@@ -58,8 +53,8 @@ public class EventManager : MonoBehaviour {
 	}
 
     public void InvButton() {
-        Debug.Log("Scroll Inventory into screen");
-        invSlide.TogglePopup();
-        // Todo: Replace with Fade or Popup instead of slide
+        Debug.Log("Toggle Inventory");
+        //invSlide.TogglePopup();
+        // Todo: Replace with Fade or Popup instead of slide?
     }
 }
