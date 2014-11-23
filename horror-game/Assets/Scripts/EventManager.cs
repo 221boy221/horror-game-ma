@@ -6,10 +6,14 @@ public class EventManager : MonoBehaviour {
     //public static string firstClicked;
     private SliderScript newspaperSlide;
     private SliderScript noteSlide;
+	private SliderScript boxNoteSlide;
 
     void Start() {
-        newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
-        noteSlide = GameObject.FindGameObjectWithTag("NoteSlide").GetComponent<SliderScript>();
+		//if ( != null) {
+			newspaperSlide = GameObject.FindGameObjectWithTag ("NewspaperSlide").GetComponent<SliderScript> ();
+			noteSlide = GameObject.FindGameObjectWithTag ("NoteSlide").GetComponent<SliderScript> ();
+			boxNoteSlide = GameObject.FindGameObjectWithTag ("BoxNoteSlide").GetComponent<SliderScript> ();
+		//}
     }
     
 
@@ -34,4 +38,14 @@ public class EventManager : MonoBehaviour {
         Debug.Log("Scroll Note into screen");
         noteSlide.TogglePopup();
     }
+
+	public void Box() {
+		Debug.Log("drop this beat i mean box");
+		// TODO: make the box drop
+	}
+
+	public void BoxNote() {
+		Debug.Log("Scroll BoxNote into screen");
+		boxNoteSlide.TogglePopup();
+	}
 }

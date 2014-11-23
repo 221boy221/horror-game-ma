@@ -11,7 +11,7 @@ public class OnClicks : MonoBehaviour {
     void Start() {
         eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
 
-        clicks = new int[5];
+        clicks = new int[9];
     }
 
     void Update() {
@@ -24,7 +24,6 @@ public class OnClicks : MonoBehaviour {
             if (hit) {
 
                 string t = hitInfo.transform.gameObject.tag;
-
                 /*
                 if (EventManager.firstClicked == null) {
                     EventManager.firstClicked = t;
@@ -32,12 +31,12 @@ public class OnClicks : MonoBehaviour {
                 
                 if (t == EventManager.firstClicked) {
                 */
-
+				//if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
                 switch (stage) {
                     case 1:
                         // Stage 1
                         Debug.Log("Clicked on: " + t);
-                        switch (t) { 
+                        switch (t) {
                             case "Laptop":
                                 clicks[0]++;
                                 Debug.Log(clicks[0]);
@@ -48,7 +47,7 @@ public class OnClicks : MonoBehaviour {
                             case "LightSwitch":
                                 clicks[1]++;
                                 Debug.Log(clicks[1]);
-                                if (clicks[1] == 10) {
+                                if (clicks[1] == 5) {
                                     eventManager.LightSwitch();
                                 }
                                 break;
@@ -56,6 +55,9 @@ public class OnClicks : MonoBehaviour {
                                 clicks[2]++;
                                 Debug.Log(clicks[2]);
                                 eventManager.Newspaper();
+								if (clicks[2] == 5) {
+									//eventManager.Newspaper();
+								}
                                 // TODO : Open up the Newspaper by switching scene? slide it in the screen.
                                 break;
                             case "Note":
@@ -64,10 +66,30 @@ public class OnClicks : MonoBehaviour {
                                 eventManager.Note();
                                 // TODO : Open up the Note by switching scene? slide it in the screen.
                                 break;
+							case "Box":
+								clicks[4]++;
+								Debug.Log(clicks[4]);
+								if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
+									stage++;
+									//eventManager.Box();
+								}
+								break;
                         }
                         break;
+					//Stage 2
                     case 2:
-                        // TODO: Stage 2
+						Debug.Log("Clicked on: " + t);
+						Application.LoadLevel("InsideBox");
+						switch (t) {
+							case "BoxNote":
+								clicks[5]++;
+								Debug.Log("well fuck");
+								eventManager.BoxNote();
+								break;
+							case "back":
+								Application.LoadLevel("prototype01");
+								break;
+						}
                         break;
                     case 3:
                         // TODO: Stage 3
@@ -75,6 +97,9 @@ public class OnClicks : MonoBehaviour {
                     default:
                         break;
                 }
+				/*if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
+					// TODO:play annimation of box falling
+				}*/
             }
         }
 
