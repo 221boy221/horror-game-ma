@@ -3,7 +3,6 @@ using System.Collections;
 
 public class EventManager : MonoBehaviour {
     
-    //public static string firstClicked;
     private SliderScript newspaperSlide;
     private SliderScript noteSlide;
     private SliderScript invSlide;
@@ -38,7 +37,8 @@ public class EventManager : MonoBehaviour {
     }
 
     public void InvButton() {
-        Debug.Log("Scroll Note into screen");
+        Debug.Log("Scroll Inventory into screen");
         invSlide.TogglePopup();
+        // Todo: Replace with Fade or Popup instead of slide
     }
 }
