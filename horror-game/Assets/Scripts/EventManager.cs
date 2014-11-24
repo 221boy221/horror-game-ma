@@ -6,13 +6,14 @@ public class EventManager : MonoBehaviour {
     private SliderScript newspaperSlide;
     private SliderScript noteSlide;
 	private SliderScript boxNoteSlide;
-    private SliderScript invSlide;
+    private GameObject tlLight;
+    private bool tlLightActive = true;
 
     private void Start() {
         if (Application.loadedLevelName == "GameScene") {
             newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
             noteSlide = GameObject.FindGameObjectWithTag("NoteSlide").GetComponent<SliderScript>();
-            //invSlide = GameObject.FindGameObjectWithTag("InvSlide").GetComponent<SliderScript>();
+            tlLight = GameObject.FindGameObjectWithTag("TL Light");
         } else if (Application.loadedLevelName == "InsideBox") {
             boxNoteSlide = GameObject.FindGameObjectWithTag("BoxNoteSlide").GetComponent<SliderScript>();
         }
@@ -26,10 +27,12 @@ public class EventManager : MonoBehaviour {
         Debug.Log("CRASH LAPTOP SCREEN ETC...");
         // TODO: Switch art of the laptop to the animation that has the static screen flickering stuff
     }
-
+    
     public void LightSwitch() {
         Debug.Log("FLICKER THE LIGHT(S)");
         // TODO: Let the lights flicker for a certain amount of time
+        tlLightActive = tlLightActive ? false : true;
+        tlLight.SetActive(tlLightActive);
     }
 
     public void Newspaper() {

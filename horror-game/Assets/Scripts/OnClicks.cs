@@ -39,8 +39,9 @@ public class OnClicks : MonoBehaviour {
                             case "LightSwitch":
                                 clicks[1]++;
                                 Debug.Log(clicks[1]);
+                                eventManager.LightSwitch();
                                 if (clicks[1] == 5) {
-                                    eventManager.LightSwitch();
+                                    
                                 }
                                 break;
                             case "Newspaper":
@@ -59,17 +60,12 @@ public class OnClicks : MonoBehaviour {
                                 eventManager.InvButton();
                                 break;
 							case "Box":     // TODO: Find a better way to do this and the part at stage 2
-								
                                 if (boxClickable) {
                                     clicks[4]++;
 								    Debug.Log(clicks[4]);
                                     GameManager.stage++;
                                     Application.LoadLevel("InsideBox");
-
                                 }
-								if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
-									
-								}
 								break;
                         }
                         break;

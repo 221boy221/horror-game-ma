@@ -11,11 +11,11 @@ TagManager:
   - NoteSlide
   - InvButton
   - InvSlide
-  - 
-  - Inventory
   - Fader
-  - 
   - Light
+  - LightBeam
+  - TL Light
+  - 
   - 
   - Box
   - BoxNote
