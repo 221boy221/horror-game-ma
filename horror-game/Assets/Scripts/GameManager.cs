@@ -3,6 +3,6 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-    public static int stage = 2;
+    public static int stage = 1;
 
 }
