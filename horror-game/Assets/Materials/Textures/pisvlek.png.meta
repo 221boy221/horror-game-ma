@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-guid: 6fffdc3dd41311640ba2be1f408f98be
+guid: db4fe2f1f639e5343bdcd1fede48e112
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Fresh_paper_paper
-    21300002: note
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,7 +24,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 2
+    filterMode: -1
     aniso: 1
     mipBias: -1
     wrapMode: 1

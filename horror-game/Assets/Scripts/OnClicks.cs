@@ -5,7 +5,7 @@ public class OnClicks : MonoBehaviour {
 
     private EventManager eventManager;
     private int[] clicks;
-
+    private bool boxClickable = false;
 
     private void Start() {
         eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
@@ -59,11 +59,16 @@ public class OnClicks : MonoBehaviour {
                                 eventManager.InvButton();
                                 break;
 							case "Box":     // TODO: Find a better way to do this and the part at stage 2
-								clicks[4]++;
-								Debug.Log(clicks[4]);
-								if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
-									GameManager.stage++;
+								
+                                if (boxClickable) {
+                                    clicks[4]++;
+								    Debug.Log(clicks[4]);
+                                    GameManager.stage++;
                                     Application.LoadLevel("InsideBox");
+
+                                }
+								if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
+									
 								}
 								break;
                         }
@@ -88,9 +93,10 @@ public class OnClicks : MonoBehaviour {
                     default:
                         break;
                 }
-				/*if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10){
+				if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10) {
+                    boxClickable = true;
 					// TODO:play annimation of box falling
-				}*/
+				}
             }
         }
 
