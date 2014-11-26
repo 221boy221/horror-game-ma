@@ -38,18 +38,38 @@ public class EventManager : MonoBehaviour {
 
 
     public void LaptopStatic() {
-        Debug.Log("CRASH LAPTOP SCREEN ETC...");
-        // TODO: Switch art of the laptop to the animation that has the static screen flickering stuff
+        // So that it won't be trigger-able again
+        GameManager.stage = 3;
+        
+        // TODO: Enable the laptopStatic anim
+        //       Timer of 10 secs, then disable.
+        
+        // After the 10 secs:
+        LightFlicker();
     }
     
     public void LightSwitch() {
         Debug.Log("On / Off");
-        // TODO: Let the lights flicker for a certain amount of time
+
         tlLightActive = tlLightActive ? false : true;
         tlLight.SetActive(tlLightActive);
         lpLightActive = lpLightActive ? false : true;
         lpLight.SetActive(lpLightActive);
     }
+
+    public void LightFlicker() {
+        // TODO: Flicker the lights
+    }
+    
+    public void BoxFall() {
+        if (GameManager.popup) {
+            Debug.Log("Box fall animation");
+            // TODO: make the box drop
+
+            // When falling anim is done:
+            GameManager.boxClickable = true;
+        }
+	}
 
     public void Popup(string t) {
         switch(t) {
@@ -77,9 +97,6 @@ public class EventManager : MonoBehaviour {
         }
     }
 
-	public void Box() {
-		Debug.Log("drop this beat i mean box");
-		// TODO: make the box drop
-	}
+	
 
 }

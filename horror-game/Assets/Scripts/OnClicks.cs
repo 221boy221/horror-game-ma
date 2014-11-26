@@ -4,10 +4,9 @@ using System.Collections;
 public class OnClicks : MonoBehaviour {
 
     // TODO: 
-    // Find a better way to store the player's progression, maybe by making this class be used only once?
-    // Or by making a OnClicks class for every different Scene that extends the GameManager
-    // so that it doesn't need a giant switch to check it's scene and load the scene 1 switch
-    // if it's on for example scene 3.
+    //      Find a better way to store the player's progression
+    //
+
 
     private EventManager eventManager;
    
@@ -39,7 +38,7 @@ public class OnClicks : MonoBehaviour {
 
                 string t = hitInfo.transform.gameObject.tag;
                 
-                switch (GameManager.stage) {
+                switch (GameManager.scene) {
 
                     // Scene 1
                     case 1: 
@@ -86,7 +85,7 @@ public class OnClicks : MonoBehaviour {
                                 if (GameManager.boxClickable) {
                                     GameManager.clickMap[t]++;
                                     Debug.Log(GameManager.clickMap[t]);
-                                    GameManager.stage++;
+                                    GameManager.scene++;
                                     Application.LoadLevel("InsideBox");
                                 }
 								break;
@@ -94,7 +93,7 @@ public class OnClicks : MonoBehaviour {
                                 if (GameManager.ventClickable) {
                                     GameManager.clickMap[t]++;
                                     Debug.Log(GameManager.clickMap[t]);
-                                    GameManager.stage = 3;
+                                    GameManager.scene = 3;
                                     Application.LoadLevel("InsideVent");
                                 }
                                 break;
@@ -110,7 +109,8 @@ public class OnClicks : MonoBehaviour {
 								break;
 							case "Back":
 								Application.LoadLevel("GameScene");
-                                GameManager.stage = 1;
+                                GameManager.scene = 1;
+                                GameManager.stage = 2;
 								break;
 						}
                         break;
@@ -124,7 +124,7 @@ public class OnClicks : MonoBehaviour {
 							    break;
 						    case "Back":
 							    Application.LoadLevel("GameScene");
-							    GameManager.stage = 1;
+							    GameManager.scene = 1;
 							    break;
 						}
                         break;
@@ -134,12 +134,28 @@ public class OnClicks : MonoBehaviour {
                         break;
                 }
 
-                // Check the clicks  -- TODO: Actually set-up the proper events
-                if (GameManager.clickMap["LightSwitch"] >= 5 && GameManager.clickMap["Newspaper"] >= 5 && GameManager.clickMap["Note"] >= 5) {
-                    GameManager.boxClickable = true;
-                } else if (GameManager.clickMap["LightSwitch"] >= 5) {
-                    GameManager.ventClickable = true;
+                // TRIGGERS
+                switch (GameManager.stage) {
+                    // Stage 1
+                    case 1:
+                        if (!GameManager.boxClickable) {
+                            if (GameManager.clickMap["LightSwitch"] >= 3 && GameManager.clickMap["Newspaper"] >= 3 && GameManager.clickMap["Note"] >= 2) {
+                                eventManager.BoxFall();
+                            }
+                        }
+                        break;
+                    // Stage 2
+                    case 2:
+                        if (GameManager.clickMap["LightSwitch"] >= 10 && GameManager.clickMap["Newspaper"] >= 5 && GameManager.clickMap["Note"] >= 5) {
+                            eventManager.LaptopStatic();
+                        }
+                        break;
+                    // Stage 3
+                    case 3:
+
+                        break;
                 }
+
 
             }
         }
