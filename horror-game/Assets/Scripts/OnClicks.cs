@@ -9,7 +9,7 @@ public class OnClicks : MonoBehaviour {
 
 
     private EventManager eventManager;
-   
+
     private void Start() {
         eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
         if (!GameManager.dicSet) {
@@ -39,32 +39,37 @@ public class OnClicks : MonoBehaviour {
                 string t = hitInfo.transform.gameObject.tag;
                 
                 switch (GameManager.scene) {
-
                     // Scene 1
                     case 1: 
-                        
                         Debug.Log("S1 Clicked on: " + t);
-
                         switch (t) {
                             case "Laptop":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
-                                eventManager.LaptopStatic();
                                 break;
                             case "LightSwitch":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.LightSwitch();
+                                if (GameManager.stage == 3 || GameManager.stage == 4) {
+                                    GameManager.lightSwitchClicked = true;
+                                }
                                 break;
                             case "Newspaper":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
+                                if (GameManager.stage == 3 || GameManager.stage == 4) {
+                                    GameManager.newspaperClicked = true;
+                                }
                                 break;
                             case "Note":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
+                                if (GameManager.stage == 3 || GameManager.stage == 4) {
+                                    GameManager.noteClicked = true;
+                                }
                                 break;
                             case "PhotoBoyButton":
                                 GameManager.clickMap[t]++;
@@ -85,7 +90,7 @@ public class OnClicks : MonoBehaviour {
                                 if (GameManager.boxClickable) {
                                     GameManager.clickMap[t]++;
                                     Debug.Log(GameManager.clickMap[t]);
-                                    GameManager.scene++;
+                                    GameManager.scene = 2;
                                     Application.LoadLevel("InsideBox");
                                 }
 								break;
@@ -99,7 +104,6 @@ public class OnClicks : MonoBehaviour {
                                 break;
                         }
                         break;
-
 					// Scene 2
                     case 2:
 						Debug.Log("S2 Clicked on: " + t);
@@ -114,7 +118,6 @@ public class OnClicks : MonoBehaviour {
 								break;
 						}
                         break;
-
                     // Scene 3
                     case 3:
                         Debug.Log("S3 Clicked on: " + t);
@@ -128,31 +131,45 @@ public class OnClicks : MonoBehaviour {
 							    break;
 						}
                         break;
-
                     // No Scene found
                     default:
                         break;
                 }
 
+
                 // TRIGGERS
                 switch (GameManager.stage) {
-                    // Stage 1
+                    // Stage 1  -   Box
                     case 1:
                         if (!GameManager.boxClickable) {
                             if (GameManager.clickMap["LightSwitch"] >= 3 && GameManager.clickMap["Newspaper"] >= 3 && GameManager.clickMap["Note"] >= 2) {
                                 eventManager.BoxFall();
+                                Debug.Log("Stage 1  -   Box");
                             }
                         }
                         break;
-                    // Stage 2
+                    // Stage 2  -   Laptop Static
                     case 2:
                         if (GameManager.clickMap["LightSwitch"] >= 10 && GameManager.clickMap["Newspaper"] >= 5 && GameManager.clickMap["Note"] >= 5) {
                             eventManager.LaptopStatic();
+                            Debug.Log("Stage 2  -   Laptop Static");
                         }
                         break;
-                    // Stage 3
+                    // Stage 3  -   Blackout / Night adventure / Picture change
                     case 3:
-
+                        if (GameManager.lightSwitchClicked && GameManager.newspaperClicked && GameManager.noteClicked) {    
+                            GameManager.lightsOff = true;
+                            GameManager.lightSwitchClicked = GameManager.newspaperClicked = GameManager.noteClicked = false;
+                            eventManager.LightSwitch();
+                            Debug.Log("Stage 3  -   Blackout / Night adventure / Picture change");
+                        }
+                        break;
+                    // Stage 4  -   Vent system (opens when entering the boxScene)
+                    case 4:
+                        if (GameManager.lightSwitchClicked && GameManager.newspaperClicked && GameManager.noteClicked) {
+                            // next event
+                            Debug.Log("Stage 4  -   Vent system (opens when entering the boxScene)");
+                        }
                         break;
                 }
 

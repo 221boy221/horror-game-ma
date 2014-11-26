@@ -35,7 +35,7 @@ Transition:
   - m_ConditionMode: 5
     m_ConditionEvent: 
     m_EventTreshold: 0
-    m_ExitTime: 1
+    m_ExitTime: 30
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -46,7 +46,7 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: boxOpen
-  m_Speed: .100000001
+  m_Speed: .5
   m_CycleOffset: 0
   m_Motions:
   - {fileID: 7400000, guid: 2ccfb58796d05be478d15c2106053bdb, type: 2}

@@ -51,16 +51,36 @@ public class EventManager : MonoBehaviour {
     public void LightSwitch() {
         Debug.Log("On / Off");
 
-        tlLightActive = tlLightActive ? false : true;
-        tlLight.SetActive(tlLightActive);
-        lpLightActive = lpLightActive ? false : true;
-        lpLight.SetActive(lpLightActive);
+        if (!GameManager.lightsOff) {
+            tlLightActive = tlLightActive ? false : true;
+            tlLight.SetActive(tlLightActive);
+            lpLightActive = lpLightActive ? false : true;
+            lpLight.SetActive(lpLightActive);
+        } else {
+            // Start a timer of 10 seconds, lights should remain off for that amount of time
+            // After the timer:
+            LightFlicker();
+            // red eyes through window art .setActive = true;
+
+            // After all that, the player can use the lightswitch again.
+            GameManager.lightsOff = false;
+
+            // All photo's should now be changed to their scratched versions
+            PhotosScratched();
+
+            GameManager.stage = 4;
+        }
+        
     }
 
     public void LightFlicker() {
         // TODO: Flicker the lights
     }
-    
+
+    public void PhotosScratched() {
+        // TODO: Change all photo's art to their scratched versions
+    }
+
     public void BoxFall() {
         if (GameManager.popup) {
             Debug.Log("Box fall animation");
