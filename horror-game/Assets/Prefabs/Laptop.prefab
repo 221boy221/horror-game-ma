@@ -59,8 +59,8 @@ GameObject:
   - 4: {fileID: 400006}
   - 108: {fileID: 10800000}
   m_Layer: 0
-  m_Name: Point light
-  m_TagString: Untagged
+  m_Name: SpotLight
+  m_TagString: LaptopLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -15,12 +15,17 @@ TagManager:
   - Light
   - LightBeam
   - TL Light
-  - 
-  - 
   - Box
   - BoxNote
   - BoxNoteSlide
   - Back
+  - PhotoBoySlide
+  - PhotoCerysSlide
+  - PhotoSusanSlide
+  - PhotoBoyButton
+  - PhotoCerysButton
+  - PhotoSusanButton
+  - LaptopLight
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

@@ -5,17 +5,31 @@ public class EventManager : MonoBehaviour {
     
     private SliderScript newspaperSlide;
     private SliderScript noteSlide;
-	private SliderScript boxNoteSlide;
+    private SliderScript photoBoy;
+    private SliderScript photoCerys;
+    private SliderScript photoSusan;
+    private SliderScript boxNoteSlide;
+    private SliderScript ventNoteSlide;
     private GameObject tlLight;
+    private GameObject lpLight;
     private bool tlLightActive = true;
+    private bool lpLightActive = false;
 
     private void Start() {
         if (Application.loadedLevelName == "GameScene") {
-            newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
-            noteSlide = GameObject.FindGameObjectWithTag("NoteSlide").GetComponent<SliderScript>();
-            tlLight = GameObject.FindGameObjectWithTag("TL Light");
+            newspaperSlide  = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
+            noteSlide       = GameObject.FindGameObjectWithTag("NoteSlide").GetComponent<SliderScript>();
+            photoBoy        = GameObject.FindGameObjectWithTag("PhotoBoySlide").GetComponent<SliderScript>();
+            photoCerys      = GameObject.FindGameObjectWithTag("PhotoCerysSlide").GetComponent<SliderScript>();
+            photoSusan      = GameObject.FindGameObjectWithTag("PhotoSusanSlide").GetComponent<SliderScript>();
+            tlLight         = GameObject.FindGameObjectWithTag("TL Light");
+            lpLight         = GameObject.FindGameObjectWithTag("LaptopLight");
+
+            lpLight.SetActive(lpLightActive);
         } else if (Application.loadedLevelName == "InsideBox") {
             boxNoteSlide = GameObject.FindGameObjectWithTag("BoxNoteSlide").GetComponent<SliderScript>();
+        } else if (Application.loadedLevelName == "InsideVent") {
+            ventNoteSlide = GameObject.FindGameObjectWithTag("VentNoteSlide").GetComponent<SliderScript>();
         }
     }
     
@@ -29,20 +43,38 @@ public class EventManager : MonoBehaviour {
     }
     
     public void LightSwitch() {
-        Debug.Log("FLICKER THE LIGHT(S)");
+        Debug.Log("On / Off");
         // TODO: Let the lights flicker for a certain amount of time
         tlLightActive = tlLightActive ? false : true;
         tlLight.SetActive(tlLightActive);
+        lpLightActive = lpLightActive ? false : true;
+        lpLight.SetActive(lpLightActive);
     }
 
-    public void Newspaper() {
-        Debug.Log("Scroll Newspaper into screen");
-        newspaperSlide.TogglePopup();
-    }
-
-    public void Note() {
-        Debug.Log("Scroll Note into screen");
-        noteSlide.TogglePopup();
+    public void Popup(string t) {
+        switch(t) {
+            case "Newspaper":
+                newspaperSlide.TogglePopup();
+                break;
+            case "Note":
+                noteSlide.TogglePopup();
+                break;
+            case "PhotoBoyButton":
+                photoBoy.TogglePopup();
+                break;
+            case "PhotoCerysButton":
+                photoCerys.TogglePopup();
+                break;
+            case "PhotoSusanButton":
+                photoSusan.TogglePopup();
+                break;
+            case "BoxNote":
+		        boxNoteSlide.TogglePopup();
+                break;
+            case "VentNote":
+                ventNoteSlide.TogglePopup();
+                break;
+        }
     }
 
 	public void Box() {
@@ -50,14 +82,4 @@ public class EventManager : MonoBehaviour {
 		// TODO: make the box drop
 	}
 
-	public void BoxNote() {
-		Debug.Log("Scroll BoxNote into screen");
-		boxNoteSlide.TogglePopup();
-	}
-
-    public void InvButton() {
-        Debug.Log("Toggle Inventory");
-        //invSlide.TogglePopup();
-        // Todo: Replace with Fade or Popup instead of slide?
-    }
 }

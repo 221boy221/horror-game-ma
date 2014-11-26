@@ -3,14 +3,29 @@ using System.Collections;
 
 public class OnClicks : MonoBehaviour {
 
-    private EventManager eventManager;
-    private int[] clicks;
-    private bool boxClickable = false;
+    // TODO: 
+    // Find a better way to store the player's progression, maybe by making this class be used only once?
+    // Or by making a OnClicks class for every different Scene that extends the GameManager
+    // so that it doesn't need a giant switch to check it's scene and load the scene 1 switch
+    // if it's on for example scene 3.
 
+    private EventManager eventManager;
+   
     private void Start() {
         eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
-
-        clicks = new int[9];
+        if (!GameManager.dicSet) {
+            GameManager.clickMap.Add("Laptop", 0);
+            GameManager.clickMap.Add("LightSwitch", 0);
+            GameManager.clickMap.Add("Newspaper", 0);
+            GameManager.clickMap.Add("Note", 0);
+            GameManager.clickMap.Add("PhotoBoyButton", 0);
+            GameManager.clickMap.Add("PhotoCerysButton", 0);
+            GameManager.clickMap.Add("PhotoSusanButton", 0);
+            GameManager.clickMap.Add("Box", 0);
+            GameManager.clickMap.Add("Vent", 0);
+            GameManager.dicSet = true;
+        }
+        
     }
 
     private void Update() {
@@ -23,76 +38,109 @@ public class OnClicks : MonoBehaviour {
             if (hit) {
 
                 string t = hitInfo.transform.gameObject.tag;
-
+                
                 switch (GameManager.stage) {
-                    case 1:
-                        // Stage 1
+
+                    // Scene 1
+                    case 1: 
+                        
                         Debug.Log("S1 Clicked on: " + t);
+
                         switch (t) {
                             case "Laptop":
-                                clicks[0]++;
-                                Debug.Log(clicks[0]);
-                                if (clicks[0] == 10) {
-                                    eventManager.LaptopStatic();
-                                }
+                                GameManager.clickMap[t]++;
+                                Debug.Log(GameManager.clickMap[t]);
+                                eventManager.LaptopStatic();
                                 break;
                             case "LightSwitch":
-                                clicks[1]++;
-                                Debug.Log(clicks[1]);
+                                GameManager.clickMap[t]++;
+                                Debug.Log(GameManager.clickMap[t]);
                                 eventManager.LightSwitch();
-                                if (clicks[1] == 5) {
-                                    
-                                }
                                 break;
                             case "Newspaper":
-                                clicks[2]++;
-                                Debug.Log(clicks[2]);
-                                eventManager.Newspaper();
+                                GameManager.clickMap[t]++;
+                                Debug.Log(GameManager.clickMap[t]);
+                                eventManager.Popup(t);
                                 break;
                             case "Note":
-                                clicks[3]++;
-                                Debug.Log(clicks[3]);
-                                eventManager.Note();
+                                GameManager.clickMap[t]++;
+                                Debug.Log(GameManager.clickMap[t]);
+                                eventManager.Popup(t);
                                 break;
-                            case "InvButton":
-                                clicks[4]++;
-                                Debug.Log(clicks[4]);
-                                eventManager.InvButton();
+                            case "PhotoBoyButton":
+                                GameManager.clickMap[t]++;
+                                Debug.Log(GameManager.clickMap[t]);
+                                eventManager.Popup(t);
                                 break;
-							case "Box":     // TODO: Find a better way to do this and the part at stage 2
-                                if (boxClickable) {
-                                    clicks[4]++;
-								    Debug.Log(clicks[4]);
+                            case "PhotoCerysButton":
+                                GameManager.clickMap[t]++;
+                                Debug.Log(GameManager.clickMap[t]);
+                                eventManager.Popup(t);
+                                break;
+                            case "PhotoSusanButton":
+                                GameManager.clickMap[t]++;
+                                Debug.Log(GameManager.clickMap[t]);
+                                eventManager.Popup(t);
+                                break;
+                            case "Box":
+                                if (GameManager.boxClickable) {
+                                    GameManager.clickMap[t]++;
+                                    Debug.Log(GameManager.clickMap[t]);
                                     GameManager.stage++;
                                     Application.LoadLevel("InsideBox");
                                 }
 								break;
+                            case "Vent":
+                                if (GameManager.ventClickable) {
+                                    GameManager.clickMap[t]++;
+                                    Debug.Log(GameManager.clickMap[t]);
+                                    GameManager.stage = 3;
+                                    Application.LoadLevel("InsideVent");
+                                }
+                                break;
                         }
                         break;
-					//Stage 2
+
+					// Scene 2
                     case 2:
 						Debug.Log("S2 Clicked on: " + t);
 						switch (t) {
 							case "BoxNote":
-								clicks[5]++;
-								eventManager.BoxNote();
+                                eventManager.Popup(t);
 								break;
 							case "Back":
 								Application.LoadLevel("GameScene");
-                                GameManager.stage--;
+                                GameManager.stage = 1;
 								break;
 						}
                         break;
+
+                    // Scene 3
                     case 3:
-                        // TODO: Stage 3
+                        Debug.Log("S3 Clicked on: " + t);
+						switch (t) {
+						    case "VentNote":
+							    eventManager.Popup(t);
+							    break;
+						    case "Back":
+							    Application.LoadLevel("GameScene");
+							    GameManager.stage = 1;
+							    break;
+						}
                         break;
+
+                    // No Scene found
                     default:
                         break;
                 }
-				if (clicks[1] >= 10 && clicks[2] >= 10 && clicks[3] >= 10) {
-                    boxClickable = true;
-					// TODO:play annimation of box falling
-				}
+
+                // Check the clicks  -- TODO: Actually set-up the proper events
+                if (GameManager.clickMap["LightSwitch"] >= 5 && GameManager.clickMap["Newspaper"] >= 5 && GameManager.clickMap["Note"] >= 5) {
+                    GameManager.boxClickable = true;
+                } else if (GameManager.clickMap["LightSwitch"] >= 5) {
+                    GameManager.ventClickable = true;
+                }
+
             }
         }
 

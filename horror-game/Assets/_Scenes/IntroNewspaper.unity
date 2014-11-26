@@ -227,7 +227,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: c3712ac94c8827341ae4f4a503e2267f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c3712ac94c8827341ae4f4a503e2267f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &189570071
 Transform:
@@ -417,7 +417,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: db4fe2f1f639e5343bdcd1fede48e112, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .588235319}
 --- !u!1001 &1133329856
 Prefab:
   m_ObjectHideFlags: 0
@@ -604,7 +604,7 @@ Light:
   serializedVersion: 3
   m_Type: 0
   m_Color: {r: 1, g: .951318443, b: .889705896, a: 1}
-  m_Intensity: 8
+  m_Intensity: 4
   m_Range: 15
   m_SpotAngle: 172.5
   m_CookieSize: 10

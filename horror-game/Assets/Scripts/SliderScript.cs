@@ -7,8 +7,9 @@ public class SliderScript : MonoBehaviour {
 	public float speed;
 
     public bool popup = false;
-    private Vector3 originalPos;
     public bool clickAble = true;
+    private bool toggle;
+    private Vector3 originalPos;
 
     private void Start() {
         originalPos = transform.position;
@@ -30,8 +31,8 @@ public class SliderScript : MonoBehaviour {
     }
 
     public void TogglePopup() {
-        if (popup) popup = false;
-        else if (!popup) popup = true;
+        toggle = popup ? false : true;
+        popup = toggle;
     }
 
 
