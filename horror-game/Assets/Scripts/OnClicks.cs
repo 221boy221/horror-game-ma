@@ -90,8 +90,7 @@ public class OnClicks : MonoBehaviour {
                                 if (GameManager.boxClickable) {
                                     GameManager.clickMap[t]++;
                                     Debug.Log(GameManager.clickMap[t]);
-                                    GameManager.scene = 2;
-                                    Application.LoadLevel("InsideBox");
+                                    eventManager.BoxScene();
                                 }
 								break;
                             case "Vent":
@@ -114,7 +113,7 @@ public class OnClicks : MonoBehaviour {
 							case "Back":
 								Application.LoadLevel("GameScene");
                                 GameManager.scene = 1;
-                                GameManager.stage = 2;
+                                if (GameManager.stage == 1) GameManager.stage = 2;
 								break;
 						}
                         break;
@@ -150,7 +149,7 @@ public class OnClicks : MonoBehaviour {
                         break;
                     // Stage 2  -   Laptop Static
                     case 2:
-                        if (GameManager.clickMap["LightSwitch"] >= 10 && GameManager.clickMap["Newspaper"] >= 5 && GameManager.clickMap["Note"] >= 5) {
+                        if (GameManager.clickMap["LightSwitch"] >= 10 && GameManager.clickMap["Newspaper"] >= 4 && GameManager.clickMap["Note"] >= 3) {
                             eventManager.LaptopStatic();
                             Debug.Log("Stage 2  -   Laptop Static");
                         }

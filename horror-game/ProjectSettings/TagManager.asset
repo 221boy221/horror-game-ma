@@ -26,6 +26,14 @@ TagManager:
   - PhotoCerysButton
   - PhotoSusanButton
   - LaptopLight
+  - BoxFall
+  - Vent
+  - CreepWindow
+  - VentNote
+  - VentNoteSlide
+  - LaptopStatic
+  - DelayedObjects
+  - BoxAnim
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

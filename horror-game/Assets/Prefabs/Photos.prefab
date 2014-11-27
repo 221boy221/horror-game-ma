@@ -43,6 +43,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   - 65: {fileID: 6500006}
+  - 114: {fileID: 11400010}
   m_Layer: 0
   m_Name: SusanSlide
   m_TagString: PhotoSusanSlide
@@ -61,6 +62,7 @@ GameObject:
   - 212: {fileID: 21200002}
   - 114: {fileID: 11400002}
   - 65: {fileID: 6500008}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: CerysSlide
   m_TagString: PhotoCerysSlide
@@ -79,6 +81,7 @@ GameObject:
   - 212: {fileID: 21200004}
   - 114: {fileID: 11400004}
   - 65: {fileID: 6500004}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: BoySlide
   m_TagString: PhotoBoySlide
@@ -124,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .987000465, y: -2.99904704, z: 0}
+  m_LocalPosition: {x: .987000465, y: -3.22172523, z: 0}
   m_LocalScale: {x: .773280978, y: .712499738, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
@@ -136,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: -.168066531, w: .985775709}
-  m_LocalPosition: {x: -.20275265, y: -2.99904704, z: 0}
+  m_LocalPosition: {x: -.20275265, y: -3.22172523, z: 0}
   m_LocalScale: {x: .650052965, y: .686224878, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
@@ -148,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
@@ -160,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
@@ -172,7 +175,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
@@ -184,7 +187,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .16332531, y: -2.30349922, z: 0}
+  m_LocalPosition: {x: .16332531, y: -2.52617741, z: 0}
   m_LocalScale: {x: .773281276, y: .537499964, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
@@ -324,6 +327,42 @@ MonoBehaviour:
   speed: 20
   popup: 0
   clickAble: 1
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5643cf757b45034fbc301c44295fb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300000, guid: 232f3509661d32f40b0149f86315560e, type: 3}
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5643cf757b45034fbc301c44295fb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300000, guid: ca442b406af7396438a43bb27d4e5168, type: 3}
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5643cf757b45034fbc301c44295fb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300002, guid: cbe92dbb846e71244b49ad89f97e10c6, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
