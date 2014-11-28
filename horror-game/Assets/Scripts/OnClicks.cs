@@ -13,7 +13,6 @@ public class OnClicks : MonoBehaviour {
     private void Start() {
         eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
         if (!GameManager.dicSet) {
-            GameManager.clickMap.Add("Laptop", 0);
             GameManager.clickMap.Add("LightSwitch", 0);
             GameManager.clickMap.Add("Newspaper", 0);
             GameManager.clickMap.Add("Note", 0);
@@ -22,6 +21,7 @@ public class OnClicks : MonoBehaviour {
             GameManager.clickMap.Add("PhotoSusanButton", 0);
             GameManager.clickMap.Add("Box", 0);
             GameManager.clickMap.Add("Vent", 0);
+            GameManager.clickMap.Add("VentNote", 0);
             GameManager.dicSet = true;
         }
         
@@ -41,17 +41,13 @@ public class OnClicks : MonoBehaviour {
                 switch (GameManager.scene) {
                     // Scene 1
                     case 1: 
-                        Debug.Log("S1 Clicked on: " + t);
+                        //Debug.Log("S1 Clicked on: " + t);
                         switch (t) {
-                            case "Laptop":
-                                GameManager.clickMap[t]++;
-                                Debug.Log(GameManager.clickMap[t]);
-                                break;
                             case "LightSwitch":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.LightSwitch();
-                                if (GameManager.stage == 3 || GameManager.stage == 4) {
+                                if (GameManager.stage == 3 || GameManager.stage == 4 || GameManager.stage == 6) {
                                     GameManager.lightSwitchClicked = true;
                                 }
                                 break;
@@ -59,7 +55,7 @@ public class OnClicks : MonoBehaviour {
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
-                                if (GameManager.stage == 3 || GameManager.stage == 4) {
+                                if (GameManager.stage == 3 || GameManager.stage == 4 || GameManager.stage == 6) {
                                     GameManager.newspaperClicked = true;
                                 }
                                 break;
@@ -67,7 +63,7 @@ public class OnClicks : MonoBehaviour {
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
-                                if (GameManager.stage == 3 || GameManager.stage == 4) {
+                                if (GameManager.stage == 3 || GameManager.stage == 4 || GameManager.stage == 6) {
                                     GameManager.noteClicked = true;
                                 }
                                 break;
@@ -75,16 +71,25 @@ public class OnClicks : MonoBehaviour {
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
+                                if (GameManager.stage == 6) {
+                                    GameManager.photoBoyClicked = true;
+                                }
                                 break;
                             case "PhotoCerysButton":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
+                                if (GameManager.stage == 6) {
+                                    GameManager.photoCerysClicked = true;
+                                }
                                 break;
                             case "PhotoSusanButton":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
+                                if (GameManager.stage == 6) {
+                                    GameManager.photoSusanClicked = true;
+                                }
                                 break;
                             case "Box":
                                 if (GameManager.boxClickable) {
@@ -97,15 +102,14 @@ public class OnClicks : MonoBehaviour {
                                 if (GameManager.ventClickable) {
                                     GameManager.clickMap[t]++;
                                     Debug.Log(GameManager.clickMap[t]);
-                                    GameManager.scene = 3;
-                                    Application.LoadLevel("InsideVent");
+                                    eventManager.VentScene();
                                 }
                                 break;
                         }
                         break;
 					// Scene 2
                     case 2:
-						Debug.Log("S2 Clicked on: " + t);
+                        GameManager.isInBox = true;
 						switch (t) {
 							case "BoxNote":
                                 eventManager.Popup(t);
@@ -113,20 +117,24 @@ public class OnClicks : MonoBehaviour {
 							case "Back":
 								Application.LoadLevel("GameScene");
                                 GameManager.scene = 1;
+                                GameManager.isInBox = false;
                                 if (GameManager.stage == 1) GameManager.stage = 2;
 								break;
 						}
                         break;
                     // Scene 3
                     case 3:
-                        Debug.Log("S3 Clicked on: " + t);
+                        GameManager.isInVent = true;
 						switch (t) {
 						    case "VentNote":
+                                GameManager.clickMap[t]++;
+                                Debug.Log(GameManager.clickMap[t]);
 							    eventManager.Popup(t);
 							    break;
 						    case "Back":
 							    Application.LoadLevel("GameScene");
 							    GameManager.scene = 1;
+                                GameManager.isInVent = false;
 							    break;
 						}
                         break;
@@ -165,9 +173,31 @@ public class OnClicks : MonoBehaviour {
                         break;
                     // Stage 4  -   Vent system (opens when entering the boxScene)
                     case 4:
-                        if (GameManager.lightSwitchClicked && GameManager.newspaperClicked && GameManager.noteClicked) {
-                            // next event
-                            Debug.Log("Stage 4  -   Vent system (opens when entering the boxScene)");
+                        if (GameManager.lightSwitchClicked && GameManager.newspaperClicked && GameManager.noteClicked && GameManager.isInBox) {
+                            // TODO: vent open sfx
+                            GameManager.ventClickable = true;
+                            Debug.Log("Stage 4  -   Vent system");
+                        }
+                        break;
+                    case 5:
+                        if (GameManager.scene == 3 && GameManager.clickMap["VentNote"] >= 1 && !GameManager.popup) {
+                            eventManager.SpawnCreep();
+                            Debug.Log("case 5, scene is 3, popup true.");
+                            GameManager.stage = 6;
+                            GameManager.lightSwitchClicked = GameManager.newspaperClicked = GameManager.noteClicked = false;
+                        }
+                        break;
+                    case 6:
+                        Debug.Log("=- stage 6 -=");
+                        Debug.Log(GameManager.scene);
+                        Debug.Log(GameManager.lightSwitchClicked);
+                        Debug.Log(GameManager.newspaperClicked);
+                        Debug.Log(GameManager.noteClicked);
+                        Debug.Log(GameManager.photoBoyClicked);
+                        Debug.Log(GameManager.photoCerysClicked);
+                        Debug.Log(GameManager.photoSusanClicked);
+                        if (GameManager.scene == 1 && GameManager.lightSwitchClicked && GameManager.newspaperClicked && GameManager.noteClicked && GameManager.photoBoyClicked && GameManager.photoCerysClicked && GameManager.photoSusanClicked) {
+                            eventManager.EndGameJumpscare();
                         }
                         break;
                 }

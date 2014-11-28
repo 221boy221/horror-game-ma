@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: e5643cf757b45034fbc301c44295fb3e
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - newSprite: {instanceID: 0}
+  - newSprite2: {instanceID: 0}
+  - newTexture: {fileID: 2800000, guid: 357efed1083788449b91f7150224b276, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

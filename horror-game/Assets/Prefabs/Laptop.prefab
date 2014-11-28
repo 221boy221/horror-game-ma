@@ -44,7 +44,7 @@ GameObject:
   - 95: {fileID: 9500000}
   m_Layer: 0
   m_Name: LaptopStatic
-  m_TagString: Untagged
+  m_TagString: LaptopStatic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: .511149406, y: .173316687, z: -.208696783, w: .815557122}
-  m_LocalPosition: {x: 2.14514399, y: -2.07804775, z: 0}
+  m_LocalPosition: {x: 2.3030436, y: -2.18482542, z: 0}
   m_LocalScale: {x: 2.12565589, y: 1.28845799, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.54154301, y: -1.32646847, z: .0500000007}
+  m_LocalPosition: {x: 2.69944143, y: -1.4332453, z: .0500000007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: .501705408, y: -.321982622, z: -.0954762846, w: .797184587}
-  m_LocalPosition: {x: 4.25785637, y: -.201354265, z: -1.58878064}
+  m_LocalPosition: {x: 4.41575432, y: -.308130622, z: -1.58878064}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -149,6 +149,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1
@@ -159,9 +160,9 @@ Light:
   serializedVersion: 3
   m_Type: 0
   m_Color: {r: .720588207, g: .942190588, b: 1, a: 1}
-  m_Intensity: 8
+  m_Intensity: 6
   m_Range: 15
-  m_SpotAngle: 52.4000015
+  m_SpotAngle: 47.7999992
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0

@@ -4,19 +4,21 @@ using System.Collections;
 public class DelayScript : MonoBehaviour {
 	
     private SliderScript newspaperSlide;
+    public string loadScene;
+    public bool popupNewspaper = false;
 
 	void Awake () {
-        newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
+        if (popupNewspaper) newspaperSlide = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
 		Invoke("DelayInvoke",(10));
 	}
 
     private void DelayInvoke() {
-        newspaperSlide.TogglePopup();
+        if (popupNewspaper) newspaperSlide.TogglePopup();
         Invoke("LoadGame", 3);
 	}
 
     private void LoadGame() {
-        Application.LoadLevel("GameScene");
+        Application.LoadLevel(loadScene);
     }
 
 }

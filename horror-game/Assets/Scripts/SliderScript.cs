@@ -27,14 +27,17 @@ public class SliderScript : MonoBehaviour {
 	}
 
     private void OnMouseDown() {
-        if (clickAble) popup = false;
+        if (clickAble) {
+            popup = false;
+            GameManager.popup = popup;
+        }
     }
 
     public void TogglePopup() {
         toggle = popup ? false : true;
         popup = toggle;
         // Tell the GameManager that something is in the screen of the player
-        GameManager.popup = toggle;
+        GameManager.popup = popup;
     }
 
 
