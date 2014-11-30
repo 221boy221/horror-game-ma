@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class EventManager : MonoBehaviour {
-    
+
     private SliderScript newspaperSlide;
     private SliderScript noteSlide;
     private SliderScript boxNoteSlide;
@@ -27,7 +27,13 @@ public class EventManager : MonoBehaviour {
     private float randomizer;
     private float creepWindowNum;
 
+    private AudioSource source;
+    public AudioClip pageFlipAudio;
+    public AudioClip lichtFlipAudio;
+    public AudioClip boxOpeningAudio;
+
     private void Start() {
+        source = GetComponent<AudioSource>();
         if (Application.loadedLevelName == "GameScene") {
             newspaperSlide  = GameObject.FindGameObjectWithTag("NewspaperSlide").GetComponent<SliderScript>();
             noteSlide       = GameObject.FindGameObjectWithTag("NoteSlide").GetComponent<SliderScript>();
@@ -37,7 +43,7 @@ public class EventManager : MonoBehaviour {
             photoBoyScratched   = GameObject.FindGameObjectWithTag("PhotoBoySlide").GetComponent<SwitchSprite>();
             photoCerysScratched = GameObject.FindGameObjectWithTag("PhotoCerysSlide").GetComponent<SwitchSprite>();
             photoSusanScratched = GameObject.FindGameObjectWithTag("PhotoSusanSlide").GetComponent<SwitchSprite>();
-            //gameBG          = GameObject.FindGameObjectWithTag("GameBG").GetComponent<SwitchSprite>();
+            //gameBG        = GameObject.FindGameObjectWithTag("GameBG").GetComponent<SwitchSprite>();
             boxFall         = GameObject.FindGameObjectWithTag("BoxFall").GetComponent<SwitchSprite>();
             laptop          = GameObject.FindGameObjectWithTag("LaptopStatic").GetComponent<Animator>();
             tlLight         = GameObject.FindGameObjectWithTag("TL Light");
@@ -65,7 +71,7 @@ public class EventManager : MonoBehaviour {
             creepVent.SetActive(false);
         }
     }
-    
+
 
     /*          All events will be in here           */
 
@@ -97,12 +103,13 @@ public class EventManager : MonoBehaviour {
 
     public void BoxOpening() {
         boxAnim.Play("boxOpening");
-        // TODO: boxOpening sfx
+        //boxOpening sfx well (actually its the door open sfx)
+        source.PlayOneShot(boxOpeningAudio, 1f);
         GameManager.boxOpened = true;
     }
-    
-    
-    
+
+
+
     // LAPTOP
     public void LaptopStatic() {
         if (laptop && !GameManager.laptopStatic) { // Extra protection to avoid bugs
@@ -134,7 +141,8 @@ public class EventManager : MonoBehaviour {
                 lpLightActive = lpLightActive ? false : true;
                 lpLight.SetActive(lpLightActive);
             }
-            // TODO: light switch sfx
+            //light switch sfx
+            source.PlayOneShot(lichtFlipAudio, 1f);
         } else if (GameManager.stage == 3) {
             Debug.Log("LightSwitch(); can't click-> LightFlicker in 10 secs");
             tlLight.SetActive(false);
@@ -145,21 +153,21 @@ public class EventManager : MonoBehaviour {
             PhotosScratched();
             GameManager.stage = 4;
         }
-        
+
     }
 
     public void LightFlicker() {
         Debug.Log("LightFlicker();");
 
         GameManager.boxClickable = false;
-        GameManager.lightsOff = true; 
+        GameManager.lightsOff = true;
         if (GameManager.lightsOff) {
             StartCoroutine("LightFlick", 1);
         }
 
         Invoke("ResetLights", 10);
     }
-    
+
     public IEnumerator LightFlick() {
         Debug.Log("LightFlick();");
 
@@ -254,8 +262,9 @@ public class EventManager : MonoBehaviour {
 
     // POPUPS
     public void Popup(string t) {
-        // TODO: drag/popup sfx
-        switch(t) {
+        // swap page sfx
+        source.PlayOneShot(pageFlipAudio, 1f);
+        switch (t) {
             case "Newspaper":
                 newspaperSlide.TogglePopup();
                 break;
@@ -272,7 +281,7 @@ public class EventManager : MonoBehaviour {
                 photoSusan.TogglePopup();
                 break;
             case "BoxNote":
-		        boxNoteSlide.TogglePopup();
+                boxNoteSlide.TogglePopup();
                 break;
             case "VentNote":
                 ventNoteSlide.TogglePopup();
@@ -280,6 +289,6 @@ public class EventManager : MonoBehaviour {
         }
     }
 
-	
+
 
 }

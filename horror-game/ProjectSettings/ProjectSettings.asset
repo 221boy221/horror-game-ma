@@ -10,8 +10,8 @@ PlayerSettings:
   targetGlesGraphics: 1
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: Lorenzo - Cerys - Niels - Susan - Swan - Boy
-  productName: Horror Game
+  companyName: Boy - Swan - Niels - Cerys - Lorenzo - Susan
+  productName: Psychosis
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   defaultScreenWidth: 1024
