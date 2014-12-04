@@ -36,6 +36,7 @@ public class EventManager : MonoBehaviour {
     public AudioClip ventOpenAudio;
     public AudioClip windowBreakAudio;
     public AudioClip creepAudio;
+    public AudioClip laptopStaticAudio;
 
     private void Start() {
         source = GetComponent<AudioSource>();
@@ -117,7 +118,7 @@ public class EventManager : MonoBehaviour {
             GameManager.laptopStatic = true;
             GameManager.boxClickable = false;
             laptop.Play("laptopStatic");
-            // TODO: play static sfx
+            source.PlayOneShot(laptopStaticAudio, 1f);
             Invoke("LaptopOff", 10);
         }
     }
@@ -125,6 +126,9 @@ public class EventManager : MonoBehaviour {
     private void LaptopOff() {
         laptop.Play("laptopOff");
         lpLight.SetActive(false);
+        //source.stop(laptopStaticAudio);
+        //source.audio.mute(laptopStaticAudio);
+        DestroyImmediate(laptopStaticAudio, true);
         GameManager.laptopOff = true;
         LightFlicker();
     }

@@ -897,7 +897,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &524207697
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2276,6 +2275,7 @@ MonoBehaviour:
   ventOpenAudio: {fileID: 8300000, guid: 5be1e40bffd5c0344af9aacd7d460c4a, type: 3}
   windowBreakAudio: {fileID: 8300000, guid: e26838e9d8ea74343b0efe01f1adb215, type: 3}
   creepAudio: {fileID: 8300000, guid: e67dbae0cfcc82b49aecc52cfcedbc4d, type: 3}
+  laptopStaticAudio: {fileID: 8300000, guid: 043ee5800cb301e4788df76a0bf357f6, type: 3}
 --- !u!82 &1652771741
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2685,7 +2685,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &2023788288
 SpriteRenderer:
   m_ObjectHideFlags: 0
