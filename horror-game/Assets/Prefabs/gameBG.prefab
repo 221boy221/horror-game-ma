@@ -28,7 +28,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
-  - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -46,6 +45,7 @@ GameObject:
   - 4: {fileID: 400004}
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
+  - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -165,14 +165,14 @@ AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
+  m_GameObject: {fileID: 100004}
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 25563a82d360e1042bf0fbaf1a94f4bd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .200000003
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -290,6 +290,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -303,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newSprite: {fileID: 21300002, guid: 357efed1083788449b91f7150224b276, type: 3}
   newSprite2: {fileID: 0}
-  newTexture: {fileID: 0}
+  newTexture: {fileID: 2800000, guid: 357efed1083788449b91f7150224b276, type: 3}
   isBox: 0
 --- !u!212 &21200000
 SpriteRenderer:

@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: e8d4f4f085904ef48bbf8901669c9d23
+guid: 80b90a6c6d07d5b449adad0d65011c16
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: cerys_creepy
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,7 +22,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: -1

@@ -17,7 +17,7 @@ public class MainMenu:MonoBehaviour {
 
         // Buttons
         if (GUI.Button(new Rect(screenResX / 2 - playStyle.fixedWidth / 2, screenResY / 2, playStyle.fixedWidth, playStyle.fixedHeight), new GUIContent(), playStyle)) {
-            GameManager.ResetAll(); // Makes it so that the save data from the previous game is reset
+            GameManager.SetDefault(); // Makes it so that the save data from the previous game is reset
             Application.LoadLevel("IntroNewspaper");
         } else if (GUI.Button(new Rect(screenResX / 2 - quitStyle.fixedWidth / 2, screenResY / 2 + quitStyle.fixedHeight / 2, quitStyle.fixedWidth, quitStyle.fixedHeight), new GUIContent(), quitStyle)) {
 			Application.Quit();

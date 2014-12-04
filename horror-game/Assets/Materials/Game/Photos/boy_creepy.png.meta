@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 5df3540316ef87849b8c62b4f02fa2bf
+guid: 71177b17b22dd7f479816a2fb3081f8e
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: boy_creepy
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,7 +22,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 2048
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: -1

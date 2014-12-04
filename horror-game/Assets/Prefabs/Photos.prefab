@@ -339,7 +339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSprite: {fileID: 21300000, guid: 232f3509661d32f40b0149f86315560e, type: 3}
-  newSprite2: {fileID: 21300000, guid: 5df3540316ef87849b8c62b4f02fa2bf, type: 3}
+  newSprite2: {fileID: 21300000, guid: 71177b17b22dd7f479816a2fb3081f8e, type: 3}
+  newTexture: {fileID: 0}
   isBox: 0
 --- !u!114 &11400008
 MonoBehaviour:
@@ -353,7 +354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSprite: {fileID: 21300000, guid: ca442b406af7396438a43bb27d4e5168, type: 3}
-  newSprite2: {fileID: 21300000, guid: e8d4f4f085904ef48bbf8901669c9d23, type: 3}
+  newSprite2: {fileID: 21300000, guid: 80b90a6c6d07d5b449adad0d65011c16, type: 3}
+  newTexture: {fileID: 0}
   isBox: 0
 --- !u!114 &11400010
 MonoBehaviour:
@@ -367,7 +369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSprite: {fileID: 21300000, guid: cbe92dbb846e71244b49ad89f97e10c6, type: 3}
-  newSprite2: {fileID: 21300000, guid: e0200be5227792440bf0b4302f4595bd, type: 3}
+  newSprite2: {fileID: 21300000, guid: 8a842f8ca69401d4da2ead5ae0aa2bb7, type: 3}
+  newTexture: {fileID: 0}
   isBox: 0
 --- !u!212 &21200000
 SpriteRenderer:

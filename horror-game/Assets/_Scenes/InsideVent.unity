@@ -432,7 +432,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageFlipAudio: {fileID: 8300000, guid: 4cc789612f2b56343b12573dd6bf5eb4, type: 3}
   lichtFlipAudio: {fileID: 0}
+  boxFallAudio: {fileID: 0}
   boxOpeningAudio: {fileID: 0}
+  ventWalkingAudio: {fileID: 0}
+  ventOpenAudio: {fileID: 0}
+  windowBreakAudio: {fileID: 8300000, guid: e26838e9d8ea74343b0efe01f1adb215, type: 3}
+  creepAudio: {fileID: 8300000, guid: e67dbae0cfcc82b49aecc52cfcedbc4d, type: 3}
 --- !u!82 &1486200555
 AudioSource:
   m_ObjectHideFlags: 0

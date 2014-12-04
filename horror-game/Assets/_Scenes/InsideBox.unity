@@ -216,6 +216,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &671804909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -282,7 +283,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageFlipAudio: {fileID: 8300000, guid: 4cc789612f2b56343b12573dd6bf5eb4, type: 3}
   lichtFlipAudio: {fileID: 0}
-  boxOpeningAudio: {fileID: 8300000, guid: 61e9a22b16bbfb04db358668443f42ed, type: 3}
+  boxFallAudio: {fileID: 0}
+  boxOpeningAudio: {fileID: 8300000, guid: d808da899d6b0cd4f93efbe6ffb0328c, type: 3}
+  ventWalkingAudio: {fileID: 0}
+  ventOpenAudio: {fileID: 8300000, guid: 5be1e40bffd5c0344af9aacd7d460c4a, type: 3}
+  windowBreakAudio: {fileID: 0}
+  creepAudio: {fileID: 0}
 --- !u!4 &927005837
 Transform:
   m_ObjectHideFlags: 0

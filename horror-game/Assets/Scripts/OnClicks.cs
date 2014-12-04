@@ -12,19 +12,11 @@ public class OnClicks : MonoBehaviour {
 
     private void Start() {
         eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
+
         if (!GameManager.dicSet) {
-            GameManager.clickMap.Add("LightSwitch", 0);
-            GameManager.clickMap.Add("Newspaper", 0);
-            GameManager.clickMap.Add("Note", 0);
-            GameManager.clickMap.Add("PhotoBoyButton", 0);
-            GameManager.clickMap.Add("PhotoCerysButton", 0);
-            GameManager.clickMap.Add("PhotoSusanButton", 0);
-            GameManager.clickMap.Add("Box", 0);
-            GameManager.clickMap.Add("Vent", 0);
-            GameManager.clickMap.Add("VentNote", 0);
+            GameManager.ResetDict();
             GameManager.dicSet = true;
         }
-        
     }
 
     private void Update() {
@@ -41,55 +33,36 @@ public class OnClicks : MonoBehaviour {
                 switch (GameManager.scene) {
                     // Scene 1
                     case 1: 
-                        //Debug.Log("S1 Clicked on: " + t);
                         switch (t) {
                             case "LightSwitch":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.LightSwitch();
-                                if (GameManager.stage == 3 || GameManager.stage == 4 || GameManager.stage == 6) {
-                                    GameManager.lightSwitchClicked = true;
-                                }
                                 break;
                             case "Newspaper":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
-                                if (GameManager.stage == 3 || GameManager.stage == 4 || GameManager.stage == 6) {
-                                    GameManager.newspaperClicked = true;
-                                }
                                 break;
                             case "Note":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
-                                if (GameManager.stage == 3 || GameManager.stage == 4 || GameManager.stage == 6) {
-                                    GameManager.noteClicked = true;
-                                }
                                 break;
                             case "PhotoBoyButton":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
-                                if (GameManager.stage == 6) {
-                                    GameManager.photoBoyClicked = true;
-                                }
                                 break;
                             case "PhotoCerysButton":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
-                                if (GameManager.stage == 6) {
-                                    GameManager.photoCerysClicked = true;
-                                }
                                 break;
                             case "PhotoSusanButton":
                                 GameManager.clickMap[t]++;
                                 Debug.Log(GameManager.clickMap[t]);
                                 eventManager.Popup(t);
-                                if (GameManager.stage == 6) {
-                                    GameManager.photoSusanClicked = true;
-                                }
                                 break;
                             case "Box":
                                 if (GameManager.boxClickable) {
@@ -146,57 +119,70 @@ public class OnClicks : MonoBehaviour {
 
                 // TRIGGERS
                 switch (GameManager.stage) {
+
                     // Stage 1  -   Box
                     case 1:
                         if (!GameManager.boxClickable) {
-                            if (GameManager.clickMap["LightSwitch"] >= 3 && GameManager.clickMap["Newspaper"] >= 3 && GameManager.clickMap["Note"] >= 2) {
+                            if (GameManager.clickMap["LightSwitch"] >= 2 
+                            && GameManager.clickMap["Newspaper"] >= 1 
+                            && GameManager.clickMap["Note"] >= 2
+                            && GameManager.popup) {
                                 eventManager.BoxFall();
-                                Debug.Log("Stage 1  -   Box");
+                                GameManager.ResetDict();
                             }
                         }
                         break;
+
                     // Stage 2  -   Laptop Static
                     case 2:
-                        if (GameManager.clickMap["LightSwitch"] >= 10 && GameManager.clickMap["Newspaper"] >= 4 && GameManager.clickMap["Note"] >= 3) {
+                        if (GameManager.clickMap["LightSwitch"] >= 3) {
                             eventManager.LaptopStatic();
-                            Debug.Log("Stage 2  -   Laptop Static");
+                            GameManager.ResetDict();
                         }
                         break;
+
                     // Stage 3  -   Blackout / Night adventure / Picture change
                     case 3:
-                        if (GameManager.lightSwitchClicked && GameManager.newspaperClicked && GameManager.noteClicked) {    
+                        if (GameManager.clickMap["LightSwitch"] >= 1
+                        && GameManager.clickMap["Newspaper"] >= 1
+                        && GameManager.clickMap["Note"] >= 1) {
                             GameManager.lightsOff = true;
-                            GameManager.lightSwitchClicked = GameManager.newspaperClicked = GameManager.noteClicked = false;
                             eventManager.LightSwitch();
-                            Debug.Log("Stage 3  -   Blackout / Night adventure / Picture change");
+                            GameManager.ResetDict();
                         }
                         break;
+
                     // Stage 4  -   Vent system (opens when entering the boxScene)
                     case 4:
-                        if (GameManager.lightSwitchClicked && GameManager.newspaperClicked && GameManager.noteClicked && GameManager.isInBox) {
-                            // TODO: vent open sfx
-                            GameManager.ventClickable = true;
-                            Debug.Log("Stage 4  -   Vent system");
+                        if (GameManager.clickMap["LightSwitch"] >= 1
+                        && GameManager.clickMap["Newspaper"] >= 1
+                        && GameManager.clickMap["Note"] >= 1
+                        && GameManager.isInBox) {
+                            eventManager.VentOpen();
+                            GameManager.ResetDict();
                         }
                         break;
+
+                    // Stage 5  -   Vent note jumpscare
                     case 5:
-                        if (GameManager.scene == 3 && GameManager.clickMap["VentNote"] >= 1 && !GameManager.popup) {
+                        if (GameManager.scene == 3
+                        && GameManager.clickMap["VentNote"] >= 1
+                        && !GameManager.popup) {
                             eventManager.SpawnCreep();
-                            Debug.Log("case 5, scene is 3, popup true.");
                             GameManager.stage = 6;
-                            GameManager.lightSwitchClicked = GameManager.newspaperClicked = GameManager.noteClicked = false;
+                            GameManager.ResetDict();
                         }
                         break;
+
+                    // Stage 6  -   Endgame
                     case 6:
-                        Debug.Log("=- stage 6 -=");
-                        Debug.Log(GameManager.scene);
-                        Debug.Log(GameManager.lightSwitchClicked);
-                        Debug.Log(GameManager.newspaperClicked);
-                        Debug.Log(GameManager.noteClicked);
-                        Debug.Log(GameManager.photoBoyClicked);
-                        Debug.Log(GameManager.photoCerysClicked);
-                        Debug.Log(GameManager.photoSusanClicked);
-                        if (GameManager.scene == 1 && GameManager.lightSwitchClicked && GameManager.newspaperClicked && GameManager.noteClicked && GameManager.photoBoyClicked && GameManager.photoCerysClicked && GameManager.photoSusanClicked) {
+                        if (GameManager.scene == 1 
+                        && GameManager.clickMap["LightSwitch"] >= 1 
+                        && GameManager.clickMap["Newspaper"] >= 1
+                        && GameManager.clickMap["Note"] >= 1
+                        && GameManager.clickMap["PhotoBoyButton"] >= 1
+                        && GameManager.clickMap["PhotoCerysButton"] >= 1
+                        && GameManager.clickMap["PhotoSusanButton"] >= 1) {
                             eventManager.EndGameJumpscare();
                         }
                         break;
